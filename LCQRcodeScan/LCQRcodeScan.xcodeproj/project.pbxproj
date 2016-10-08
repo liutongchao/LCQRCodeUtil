@@ -207,6 +207,8 @@
 				TargetAttributes = {
 					57FA9F8B1D24F20F003149BC = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = FEN4DYVP62;
+						ProvisioningStyle = Automatic;
 					};
 					57FA9FA41D24F20F003149BC = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -413,6 +415,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = FEN4DYVP62;
 				INFOPLIST_FILE = LCQRcodeScan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = LX.LCQRcodeScan;
@@ -424,6 +428,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = FEN4DYVP62;
 				INFOPLIST_FILE = LCQRcodeScan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = LX.LCQRcodeScan;
@@ -496,6 +502,7 @@
 				57FA9FBB1D24F20F003149BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		57FA9FBC1D24F20F003149BC /* Build configuration list for PBXNativeTarget "LCQRcodeScanTests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +511,7 @@
 				57FA9FBE1D24F20F003149BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		57FA9FBF1D24F20F003149BC /* Build configuration list for PBXNativeTarget "LCQRcodeScanUITests" */ = {
 			isa = XCConfigurationList;
@@ -512,6 +520,7 @@
 				57FA9FC11D24F20F003149BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
