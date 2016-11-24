@@ -77,6 +77,11 @@
         stringValue = metadataObject.stringValue;
         NSLog(stringValue);
         
+        NSArray *arry = metadataObject.corners;
+        for (id temp in arry) {
+            NSLog(@"%@",temp);
+        }
+        
     } else {
         NSLog(@"无扫描信息");
         return;
