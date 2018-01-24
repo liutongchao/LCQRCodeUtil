@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import <AVFoundation/AVFoundation.h>
+#import "LCQRCodeUtil.h"
 
 /**
  *  屏幕 高 宽 边界
@@ -34,6 +35,7 @@
 @property (strong,nonatomic)AVCaptureVideoPreviewLayer * preview;
 
 @property (nonatomic, strong) UIImageView * line;
+@property (weak, nonatomic) IBOutlet UIButton *localImage;
 
 @end
 
@@ -44,9 +46,19 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     [self configView];
+    
+}
+
+-(BOOL)prefersStatusBarHidden{
+    return  YES;
 }
 
 -(void)configView{
+    
+    self.localImage.layer.masksToBounds = YES;
+    self.localImage.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.localImage.layer.borderWidth = 1;
+    
     UIImageView * imageView = [[UIImageView alloc]initWithFrame:kScanRect];
     imageView.image = [UIImage imageNamed:@"pick_bg"];
     [self.view addSubview:imageView];
@@ -58,6 +70,7 @@
     [self.view addSubview:_line];
     
     timer = [NSTimer scheduledTimerWithTimeInterval:.02 target:self selector:@selector(animation1) userInfo:nil repeats:YES];
+    
 
 }
 -(void)viewWillAppear:(BOOL)animated{
@@ -65,6 +78,12 @@
     [self setCropRect:kScanRect];
     
     [self performSelector:@selector(setupCamera) withObject:nil afterDelay:0.3];
+
+}
+- (IBAction)tapLocalScan:(UIButton *)sender {
+    NSLog(@"识别本地图片");
+    NSString *result = [LCQRCodeUtil readQRCodeFromImage:[UIImage imageNamed:@"QRImage"]];
+    NSLog(@"识别本地图片结果:%@",result);
 
 }
 
@@ -103,6 +122,8 @@
     [cropLayer setNeedsDisplay];
     
     [self.view.layer addSublayer:cropLayer];
+    [self.view bringSubviewToFront:self.localImage];
+
 }
 
 - (void)setupCamera

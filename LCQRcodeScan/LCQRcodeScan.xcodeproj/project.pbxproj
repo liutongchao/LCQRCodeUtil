@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		57490E302018609D009CFE1A /* QRImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 57490E2F2018609D009CFE1A /* QRImage.png */; };
+		57490E34201861FD009CFE1A /* LCQrcodeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 57490E33201861FD009CFE1A /* LCQrcodeUtil.m */; };
+		57490E36201862E7009CFE1A /* QRImage2.png in Resources */ = {isa = PBXBuildFile; fileRef = 57490E35201862E7009CFE1A /* QRImage2.png */; };
 		57FA9F911D24F20F003149BC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 57FA9F901D24F20F003149BC /* main.m */; };
 		57FA9F941D24F20F003149BC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 57FA9F931D24F20F003149BC /* AppDelegate.m */; };
 		57FA9F971D24F20F003149BC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57FA9F961D24F20F003149BC /* ViewController.m */; };
@@ -35,6 +38,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		57490E2F2018609D009CFE1A /* QRImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = QRImage.png; sourceTree = "<group>"; };
+		57490E32201861FD009CFE1A /* LCQRCodeUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCQRCodeUtil.h; sourceTree = "<group>"; };
+		57490E33201861FD009CFE1A /* LCQrcodeUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCQrcodeUtil.m; sourceTree = "<group>"; };
+		57490E35201862E7009CFE1A /* QRImage2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = QRImage2.png; sourceTree = "<group>"; };
 		57FA9F8C1D24F20F003149BC /* LCQRcodeScan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LCQRcodeScan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57FA9F901D24F20F003149BC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		57FA9F921D24F20F003149BC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -78,9 +85,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		57490E31201861FD009CFE1A /* LCQRCodeUtil */ = {
+			isa = PBXGroup;
+			children = (
+				57490E32201861FD009CFE1A /* LCQRCodeUtil.h */,
+				57490E33201861FD009CFE1A /* LCQrcodeUtil.m */,
+			);
+			name = LCQRCodeUtil;
+			path = ../LCQRCodeUtil;
+			sourceTree = "<group>";
+		};
 		57FA9F831D24F20F003149BC = {
 			isa = PBXGroup;
 			children = (
+				57490E31201861FD009CFE1A /* LCQRCodeUtil */,
 				57FA9F8E1D24F20F003149BC /* LCQRcodeScan */,
 				57FA9FA81D24F20F003149BC /* LCQRcodeScanTests */,
 				57FA9FB31D24F20F003149BC /* LCQRcodeScanUITests */,
@@ -101,6 +119,8 @@
 		57FA9F8E1D24F20F003149BC /* LCQRcodeScan */ = {
 			isa = PBXGroup;
 			children = (
+				57490E35201862E7009CFE1A /* QRImage2.png */,
+				57490E2F2018609D009CFE1A /* QRImage.png */,
 				57FA9F921D24F20F003149BC /* AppDelegate.h */,
 				57FA9F931D24F20F003149BC /* AppDelegate.m */,
 				57FA9F951D24F20F003149BC /* ViewController.h */,
@@ -202,7 +222,7 @@
 		57FA9F841D24F20F003149BC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "刘通超";
 				TargetAttributes = {
 					57FA9F8B1D24F20F003149BC = {
@@ -245,6 +265,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57490E36201862E7009CFE1A /* QRImage2.png in Resources */,
+				57490E302018609D009CFE1A /* QRImage.png in Resources */,
 				57FA9F9F1D24F20F003149BC /* LaunchScreen.storyboard in Resources */,
 				57FA9F9C1D24F20F003149BC /* Assets.xcassets in Resources */,
 				57FA9F9A1D24F20F003149BC /* Main.storyboard in Resources */,
@@ -272,6 +294,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57490E34201861FD009CFE1A /* LCQrcodeUtil.m in Sources */,
 				57FA9F971D24F20F003149BC /* ViewController.m in Sources */,
 				57FA9F941D24F20F003149BC /* AppDelegate.m in Sources */,
 				57FA9F911D24F20F003149BC /* main.m in Sources */,
@@ -343,8 +366,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -387,8 +412,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -419,7 +446,7 @@
 				DEVELOPMENT_TEAM = FEN4DYVP62;
 				INFOPLIST_FILE = LCQRcodeScan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = LX.LCQRcodeScan;
+				PRODUCT_BUNDLE_IDENTIFIER = com.isprint.SHLoveStudy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -432,7 +459,7 @@
 				DEVELOPMENT_TEAM = FEN4DYVP62;
 				INFOPLIST_FILE = LCQRcodeScan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = LX.LCQRcodeScan;
+				PRODUCT_BUNDLE_IDENTIFIER = com.isprint.SHLoveStudy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
