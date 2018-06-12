@@ -6,7 +6,7 @@
 //  Copyright © 2016年 刘通超. All rights reserved.
 //
 
-#import "LCQrcodeUtil.h"
+#import "LCQRCodeUtil.h"
 
 @implementation LCQRCodeUtil
 
@@ -52,7 +52,7 @@
     CIImage *ciimage = [self createQRForString:QRString];
     UIImage *qrcode = [self createNonInterpolatedUIImageFormCIImage:ciimage withSize:sizeWidth];
     if (color) {
-        CGFloat R, G, B;
+        CGFloat R=0, G=0, B=0;
         
         CGColorRef colorRef = [color CGColor];
         long numComponents = CGColorGetNumberOfComponents(colorRef);

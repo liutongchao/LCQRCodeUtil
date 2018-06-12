@@ -25,7 +25,6 @@
 @interface ViewController ()<AVCaptureMetadataOutputObjectsDelegate>{
     int num;
     BOOL upOrdown;
-    NSTimer * timer;
     CAShapeLayer *cropLayer;
 }
 @property (strong,nonatomic)AVCaptureDevice * device;
@@ -35,6 +34,7 @@
 @property (strong,nonatomic)AVCaptureVideoPreviewLayer * preview;
 
 @property (nonatomic, strong) UIImageView * line;
+@property (nonatomic, strong) NSTimer * timer;
 @property (weak, nonatomic) IBOutlet UIButton *localImage;
 
 @end
@@ -69,7 +69,7 @@
     _line.image = [UIImage imageNamed:@"line.png"];
     [self.view addSubview:_line];
     
-    timer = [NSTimer scheduledTimerWithTimeInterval:.02 target:self selector:@selector(animation1) userInfo:nil repeats:YES];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:.02 target:self selector:@selector(animation1) userInfo:nil repeats:YES];
     
 
 }
@@ -138,14 +138,14 @@
         return;
     }
     // Device
-    _device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    self.device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     
     // Input
-    _input = [AVCaptureDeviceInput deviceInputWithDevice:self.device error:nil];
+    self.input = [AVCaptureDeviceInput deviceInputWithDevice:self.device error:nil];
     
     // Output
-    _output = [[AVCaptureMetadataOutput alloc]init];
-    [_output setMetadataObjectsDelegate:self queue:dispatch_get_main_queue()];
+    self.output = [[AVCaptureMetadataOutput alloc]init];
+    [self.output setMetadataObjectsDelegate:self queue:dispatch_get_main_queue()];
     
     //设置扫描区域
     CGFloat top = TOP/SCREEN_HEIGHT;
@@ -153,33 +153,33 @@
     CGFloat width = 220/SCREEN_WIDTH;
     CGFloat height = 220/SCREEN_HEIGHT;
     ///top 与 left 互换  width 与 height 互换
-    [_output setRectOfInterest:CGRectMake(top,left, height, width)];
+    [self.output setRectOfInterest:CGRectMake(top,left, height, width)];
 
    
     // Session
-    _session = [[AVCaptureSession alloc]init];
-    [_session setSessionPreset:AVCaptureSessionPresetHigh];
-    if ([_session canAddInput:self.input])
+    self.session = [[AVCaptureSession alloc]init];
+    [self.session setSessionPreset:AVCaptureSessionPresetHigh];
+    if ([self.session canAddInput:self.input])
     {
-        [_session addInput:self.input];
+        [self.session addInput:self.input];
     }
     
-    if ([_session canAddOutput:self.output])
+    if ([self.session canAddOutput:self.output])
     {
-        [_session addOutput:self.output];
+        [self.session addOutput:self.output];
     }
     
     // 条码类型 AVMetadataObjectTypeQRCode
-    [_output setMetadataObjectTypes:[NSArray arrayWithObjects:AVMetadataObjectTypeQRCode, nil]];
+    [self.output setMetadataObjectTypes:[NSArray arrayWithObjects:AVMetadataObjectTypeQRCode, nil]];
     
     // Preview
-    _preview =[AVCaptureVideoPreviewLayer layerWithSession:_session];
-    _preview.videoGravity = AVLayerVideoGravityResizeAspectFill;
-    _preview.frame =self.view.layer.bounds;
-    [self.view.layer insertSublayer:_preview atIndex:0];
+    self.preview =[AVCaptureVideoPreviewLayer layerWithSession:self.session];
+    self.preview.videoGravity = AVLayerVideoGravityResizeAspectFill;
+    self.preview.frame =self.view.layer.bounds;
+    [self.view.layer insertSublayer:self.preview atIndex:0];
     
     // Start
-    [_session startRunning];
+    [self.session startRunning];
 }
 
 #pragma mark AVCaptureMetadataOutputObjectsDelegate
@@ -190,8 +190,8 @@
     if ([metadataObjects count] >0)
     {
         //停止扫描
-        [_session stopRunning];
-        [timer setFireDate:[NSDate distantFuture]];
+        [self.session stopRunning];
+        [self.timer setFireDate:[NSDate distantFuture]];
         
         AVMetadataMachineReadableCodeObject * metadataObject = [metadataObjects objectAtIndex:0];
         stringValue = metadataObject.stringValue;
@@ -205,9 +205,9 @@
         
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"扫描结果" message:stringValue preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            if (_session != nil && timer != nil) {
-                [_session startRunning];
-                [timer setFireDate:[NSDate date]];
+            if (self.session != nil && self.timer != nil) {
+                [self.session startRunning];
+                [self.timer setFireDate:[NSDate date]];
             }
 
         }]];
